@@ -1,7 +1,8 @@
-package com.example.smaboymd
+package com.example.smaboymd.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.smaboymd.R
 
 class MainActivity : AppCompatActivity() {
 
