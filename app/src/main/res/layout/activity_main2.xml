@@ -35,7 +35,7 @@
             android:hint="请输入用户名"
             android:textSize="15sp"
             tools:ignore="HardcodedText"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:autofillHints="用户名" />
 
     </com.google.android.material.textfield.TextInputLayout>
