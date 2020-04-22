@@ -39,4 +39,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     //kotlin工具库
     implementation 'org.jetbrains.anko:anko:0.10.5'
+    //崩溃库
+    debugImplementation "com.simple:spiderman:1.1.5"
+    releaseImplementation "com.simple:spiderman-no-op:1.1.5"
 }

@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.smaboymd.R
 import com.google.android.material.drawable.DrawableUtils
 import com.google.android.material.textfield.TextInputLayout
+import com.simple.spiderman.SpiderMan
 import org.jetbrains.anko.find
+import java.util.*
 
 
 class Main2Activity : AppCompatActivity() {
@@ -16,7 +18,11 @@ class Main2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        init()
+        try {
+            init()
+        } catch (e: Exception) {
+            SpiderMan.show(e)
+        }
     }
 
     private fun init() {
@@ -45,8 +51,6 @@ class Main2Activity : AppCompatActivity() {
             }
 
         })
-
-
 
     }
 }
