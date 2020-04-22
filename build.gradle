@@ -5,7 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.2'
@@ -20,10 +20,43 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+//添加gradle构建生命周期的监听器
+gradle.addBuildListener(new BuildListener() {
+    @Override
+    void buildStarted(Gradle gradle) {
+        println('开始构建')
+    }
+
+    @Override
+    void settingsEvaluated(Settings settings) {
+    //settings.gradle.rootProject 这里访问 Project 对象时会报错,因为还未完成 Project 的初始化    
+     println('settings 评估完成（settings.gradle 中代码执行完毕')
+    }
+
+    @Override
+    void projectsLoaded(Gradle var) {
+        println '项目结构加载完成（初始化阶段结束）'
+        println '初始化结束，可访问根项目：' + var.gradle.rootProject
+    }
+
+    @Override
+    void projectsEvaluated(Gradle var) {
+        println('所有项目评估完成（配置阶段结束）')
+
+    }
+
+    @Override
+    void buildFinished(BuildResult result) {
+        println('构建结束')
+
+    }
+})
