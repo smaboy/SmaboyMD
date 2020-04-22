@@ -28,7 +28,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-
 //添加gradle构建生命周期的监听器
 gradle.addBuildListener(new BuildListener() {
     @Override
@@ -60,3 +59,27 @@ gradle.addBuildListener(new BuildListener() {
 
     }
 })
+
+gradle.beforeProject {
+
+    println('beforeProject')
+}
+
+gradle.afterProject {
+    println('afterProject')
+}
+
+gradle.buildFinished {
+    println 'buildFinished'
+}
+
+gradle.taskGraph.whenReady {
+    println 'whenReady'
+}
+
+gradle.taskGraph.beforeTask {
+    println 'beforeTask'
+}
+gradle.taskGraph.afterTask {
+    println 'afterTask'
+}
