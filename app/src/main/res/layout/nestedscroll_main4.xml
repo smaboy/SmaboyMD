@@ -79,6 +79,7 @@
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            app:cardBackgroundColor="@android:color/darker_gray"
             app:cardElevation="3dp">
 
             <TextView
@@ -98,6 +99,7 @@
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            app:cardBackgroundColor="@android:color/holo_red_light"
             app:cardElevation="3dp">
 
             <TextView
@@ -116,6 +118,7 @@
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            app:cardBackgroundColor="@android:color/holo_green_light"
             app:cardElevation="3dp">
 
             <TextView
@@ -135,6 +138,7 @@
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            app:cardBackgroundColor="@android:color/holo_orange_light"
             app:cardElevation="3dp">
 
             <TextView
@@ -154,6 +158,7 @@
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            app:cardBackgroundColor="@android:color/holo_red_dark"
             app:cardElevation="3dp">
 
             <TextView
