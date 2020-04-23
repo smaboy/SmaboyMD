@@ -12,9 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.ItemListActivity"
+            android:label="@string/title_item_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName=".activity.ItemListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.smaboymd.activity.ItemListActivity" />
+        </activity>
+        <activity
             android:name=".activity.Main3Activity"
             android:label="@string/title_activity_main3"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.Main2Activity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>

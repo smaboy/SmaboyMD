@@ -11,7 +11,7 @@ import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
-    val strArray = arrayOf("btn_01","btn_02","btn_03","btn_04","btn_05","btn_06")
+    val strArray = arrayOf("TextInputLayout","DrawerNavigation","Detail Flow","btn_04","btn_05","btn_06")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +29,13 @@ class MainActivity : AppCompatActivity() {
             text = strArray[1]
         }.setOnClickListener{
             startActivity<Main3Activity>()
-            toast(strArray[1])
+//            toast(strArray[1])
         }
         find<Button>(R.id.btn_03).apply {
             text = strArray[2]
         }.setOnClickListener{
-            toast(strArray[2])
+            startActivity<ItemListActivity>()
+//            toast(strArray[2])
         }
         find<Button>(R.id.btn_04).apply {
             text = strArray[3]
