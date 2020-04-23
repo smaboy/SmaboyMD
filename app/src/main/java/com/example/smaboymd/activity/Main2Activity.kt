@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smaboymd.R
+import com.example.smaboymd.activity.base.BaseActivity
 import com.google.android.material.drawable.DrawableUtils
 import com.google.android.material.textfield.TextInputLayout
 import com.simple.spiderman.SpiderMan
@@ -13,7 +14,7 @@ import org.jetbrains.anko.find
 import java.util.*
 
 
-class Main2Activity : AppCompatActivity() {
+class Main2Activity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

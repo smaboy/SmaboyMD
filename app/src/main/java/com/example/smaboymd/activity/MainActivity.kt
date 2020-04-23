@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.smaboymd.R
+import com.example.smaboymd.activity.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     val strArray = arrayOf("TextInputLayout","DrawerNavigation","Detail Flow","btn_04","btn_05","btn_06")
 
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
         find<Button>(R.id.btn_04).apply {
             text = strArray[3]
         }.setOnClickListener{
-            toast(strArray[3])
+            startActivity<Main4Activity>()
+//            toast(strArray[3])
         }
         find<Button>(R.id.btn_05).apply {
             text = strArray[4]
