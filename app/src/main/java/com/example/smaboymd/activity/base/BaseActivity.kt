@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.example.smaboymd.R
 import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.immersionBar
 
 /**
  * 类名: BaseActivity
@@ -16,9 +17,11 @@ abstract class BaseActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ImmersionBar.with(this)
-            .statusBarColor(R.color.colorPrimary)
-            .fitsSystemWindows(true)  //使用该属性必须指定状态栏的颜色，不然状态栏透明，很难看
-            .init()
+       immersionBar()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
     }
 }
