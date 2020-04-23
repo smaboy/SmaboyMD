@@ -17,7 +17,9 @@ abstract class BaseActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       immersionBar()
+       immersionBar{
+           statusBarDarkFont(true)//状态栏深色字体
+       }
     }
 
     override fun onDestroy() {
