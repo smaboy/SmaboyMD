@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             startActivity<Main2Activity>()
         }
         find<Button>(R.id.btn_02).apply {
-            text = strArray[1]
+            startActivity<Main3Activity>()
         }.setOnClickListener{
             toast(strArray[1])
         }
