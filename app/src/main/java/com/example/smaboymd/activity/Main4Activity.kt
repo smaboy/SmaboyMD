@@ -6,6 +6,8 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.smaboymd.R
 import com.example.smaboymd.activity.base.BaseActivity
 import com.gyf.immersionbar.ktx.immersionBar
@@ -34,6 +36,13 @@ class Main4Activity : BaseActivity() {
         find<ImageView>(R.id.iv_head).setOnClickListener {
             toast("我是头像啊")
         }
+
+        val option = RequestOptions().apply {
+            circleCrop()
+        }
+        Glide.with(this).load(R.drawable.woman01).apply(option).into(find(R.id.iv_head))
+
+
 
 
     }

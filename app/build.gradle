@@ -68,4 +68,5 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
 // kotlin扩展（可选）
     implementation 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
 }

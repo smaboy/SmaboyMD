@@ -35,7 +35,12 @@ class TransferHeaderBehavior(context: Context?, attrs: AttributeSet?) :
     private var mOriginalHeaderY = 0
 
 
-    private val mContext = context
+    private  var mContext : Context? = null
+
+    init {
+        mContext = context
+
+    }
 
     override fun layoutDependsOn(
         parent: CoordinatorLayout,
@@ -50,8 +55,9 @@ class TransferHeaderBehavior(context: Context?, attrs: AttributeSet?) :
         child: View,
         dependency: View
     ): Boolean {
-        /*****************确定起始位置-水平居中，Imagview高度的一般在dependency中******************/
-
+        if (mContext == null) {
+            return super.onDependentViewChanged(parent, child, dependency)
+        }
         // 计算X轴坐标
         if (mOriginalHeaderX == 0) {
             mOriginalHeaderX = dependency.width / 2 - child.width / 2
@@ -59,7 +65,7 @@ class TransferHeaderBehavior(context: Context?, attrs: AttributeSet?) :
         // 计算Y轴坐标
         if (mOriginalHeaderY == 0) {
             //依赖布局dependency的纵坐标减去imageview的高度一般加上30的偏移量
-            mOriginalHeaderY = (dependency.y - child.height/2).toInt()
+            mOriginalHeaderY = (dependency.y - child.height/2 - mContext!!.dip(15) ).toInt()
         }
 
         //X轴百分比
@@ -78,13 +84,13 @@ class TransferHeaderBehavior(context: Context?, attrs: AttributeSet?) :
             x = 0F
         }
 
-        // 设置child位置
-        child.x = x
-        child.y = mOriginalHeaderY - mOriginalHeaderY * mPercentY
+        // 设置child位置(注：由于child缩小了一倍，默认是左上顶点0，0；考虑状态栏的高度和标题栏的高度，添加了后面的位移，保持头像能在标题栏的竖直居中的位置，左边距为10dp)
+        child.x = x-mContext!!.dip(10)
+        child.y = mOriginalHeaderY - mOriginalHeaderY * mPercentY+(-mContext!!.dip(10)+ImmersionBar.getStatusBarHeight(mContext as Activity))
 
         //如需要精确放置头像的位置，需确定头像在标题栏具体坐标
 
-        //设置child的缩放
+        //设置child的缩放g
         child.scaleX = (1-0.5*mPercentX).toFloat()
         child.scaleY = (1-0.5*mPercentY).toFloat()
 
