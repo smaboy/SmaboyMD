@@ -8,8 +8,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-<!--        android:background="@drawable/woman01"-->
+        android:layout_height="240dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -27,7 +26,7 @@
             <ImageView
                 android:id="@+id/iv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:src="@drawable/woman01"
                 android:scaleType="fitXY"
                 app:layout_collapseMode="parallax"
@@ -39,21 +38,16 @@
 
     <include layout="@layout/nestedscroll_main4" />
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/tl"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_anchor="@id/iv"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        app:layout_behavior="com.example.smaboymd.custom.TranslucentBehavior"-->
-<!--        app:navigationIcon="@android:mipmap/sym_def_app_icon" />-->
+
+<!--    标题栏-->
     <LinearLayout
         android:id="@+id/ll_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_light"
         app:layout_behavior="com.example.smaboymd.custom.TranslucentBehavior"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="visible">
 <!--        用于抵消状态栏的高度-->
         <View
             android:id="@+id/v_status_bar"
@@ -94,6 +88,17 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <!--头像view-->
+    <ImageView
+        android:id="@+id/iv_head"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"
+        app:layout_behavior=".custom.TransferHeaderBehavior"
+        app:layout_anchor="@id/iv"/>
 
 
 

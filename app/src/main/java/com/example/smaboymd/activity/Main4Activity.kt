@@ -3,6 +3,7 @@ package com.example.smaboymd.activity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.example.smaboymd.R
@@ -10,6 +11,8 @@ import com.example.smaboymd.activity.base.BaseActivity
 import com.gyf.immersionbar.ktx.immersionBar
 import com.gyf.immersionbar.ktx.statusBarHeight
 import org.jetbrains.anko.find
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.toast
 
 class Main4Activity : BaseActivity() {
 
@@ -26,6 +29,10 @@ class Main4Activity : BaseActivity() {
             //这里将标题栏偏移状态栏的高度，以显示完全
             val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,statusBarHeight)
             vStatusBar.layoutParams = params
+        }
+
+        find<ImageView>(R.id.iv_head).setOnClickListener {
+            toast("我是头像啊")
         }
 
 
