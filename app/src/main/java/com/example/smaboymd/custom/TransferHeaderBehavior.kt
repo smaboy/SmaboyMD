@@ -60,7 +60,7 @@ class TransferHeaderBehavior(context: Context?, attrs: AttributeSet?) :
         }
         // 计算X轴坐标
         if (mOriginalHeaderX == 0) {
-            mOriginalHeaderX = dependency.width / 2 - child.width / 2
+            mOriginalHeaderX = dependency.width / 2 - child.width / 2+mContext!!.dip(10)
         }
         // 计算Y轴坐标
         if (mOriginalHeaderY == 0) {
