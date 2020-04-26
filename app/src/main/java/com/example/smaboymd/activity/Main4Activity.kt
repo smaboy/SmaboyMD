@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.smaboymd.R
 import com.example.smaboymd.activity.base.BaseActivity
+import com.gyf.immersionbar.ktx.fitsStatusBarView
 import com.gyf.immersionbar.ktx.immersionBar
 import com.gyf.immersionbar.ktx.statusBarHeight
 import org.jetbrains.anko.find
@@ -24,13 +25,10 @@ class Main4Activity : BaseActivity() {
         getTitleBarView().hide()
 
         //获取状态栏的高度，设置标题栏的偏移量
-        val toolbar = find<LinearLayout>(R.id.ll_toolbar)
-        val vStatusBar = find<View>(R.id.v_status_bar)
         immersionBar().apply {
             //防止自己的标题栏和状态栏重叠导致，标题显示不清
             //这里将标题栏偏移状态栏的高度，以显示完全
-            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,statusBarHeight)
-            vStatusBar.layoutParams = params
+            fitsStatusBarView(find(R.id.v_status_bar))
         }
 
         find<ImageView>(R.id.iv_head).setOnClickListener {
