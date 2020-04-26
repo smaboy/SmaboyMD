@@ -18,12 +18,15 @@ class Main2Activity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
         try {
             init()
         } catch (e: Exception) {
             SpiderMan.show(e)
         }
+    }
+
+    override fun getLayout(): Int {
+       return R.layout.activity_main2
     }
 
     private fun init() {

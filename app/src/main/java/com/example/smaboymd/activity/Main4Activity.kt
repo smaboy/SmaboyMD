@@ -21,7 +21,6 @@ class Main4Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main4)
 
         //获取状态栏的高度，设置标题栏的偏移量
         val toolbar = find<LinearLayout>(R.id.ll_toolbar)
@@ -45,5 +44,9 @@ class Main4Activity : BaseActivity() {
 
 
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_main4
     }
 }

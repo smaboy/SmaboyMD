@@ -2,9 +2,11 @@ package com.example.smaboymd.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import com.example.smaboymd.R
 import com.example.smaboymd.activity.base.BaseActivity
+import com.example.smaboymd.custom.TitleBarView
 import kotlinx.android.synthetic.main.activity_main.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
@@ -16,11 +18,29 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         init()
     }
 
+    override fun getLayout(): Int {
+        return R.layout.activity_main
+    }
+
     private fun init() {
+        //初始化标题栏
+        getTitleBarView().apply {
+            getTitleView().text = String.format("%s"," 我是首页")
+        }.onClickTitleBarViewListener = object : TitleBarView.OnClickTitleBarViewListener{
+            override fun onLeftIconClick(view: View) {
+                finish()
+            }
+
+            override fun onCenterTextClick(view: View) {
+            }
+
+            override fun onRightIconClick(view: View) {
+            }
+        }
+
         find<Button>(R.id.btn_01).apply {
             text = strArray[0]
         }.setOnClickListener{
