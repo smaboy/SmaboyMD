@@ -53,6 +53,7 @@ abstract class BaseActivity : FragmentActivity() {
         //标题栏处理
         find<TitleBarView>(R.id.view_title_bar).apply {
             setVToolBarHeight(statusBarHeight)
+            getTitleView().text = getString(R.string.app_name)
         }
 
 
