@@ -21,6 +21,7 @@ class Main4Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         super.onCreate(savedInstanceState)
+        getTitleBarView().hide()
 
         //获取状态栏的高度，设置标题栏的偏移量
         val toolbar = find<LinearLayout>(R.id.ll_toolbar)

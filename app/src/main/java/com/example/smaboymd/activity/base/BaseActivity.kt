@@ -13,6 +13,7 @@ import com.example.smaboymd.R
 import com.example.smaboymd.custom.TitleBarView
 import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.ktx.immersionBar
+import com.gyf.immersionbar.ktx.statusBarHeight
 import kotlinx.android.synthetic.main.item_list_content.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -48,6 +49,12 @@ abstract class BaseActivity : FragmentActivity() {
         find<FrameLayout>(R.id.fl_content).apply {
             addView(LayoutInflater.from(context).inflate(getLayout(),null,false))
         }
+
+        //标题栏处理
+        find<TitleBarView>(R.id.view_title_bar).apply {
+            setVToolBarHeight(statusBarHeight)
+        }
+
 
     }
     /**

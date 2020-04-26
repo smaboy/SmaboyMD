@@ -90,7 +90,7 @@ class TitleBarView @JvmOverloads constructor(context: Context?, attrs: Attribute
     fun setVToolBarHeight(height: Int) {
         //处理沉浸式标题栏
         find<View>(R.id.v_status_bar).apply {
-            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,ImmersionBar.getActionBarHeight(context as Activity))
+            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,height)
             layoutParams = params
         }
     }
