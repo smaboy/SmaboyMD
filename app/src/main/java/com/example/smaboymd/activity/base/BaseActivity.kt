@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import com.example.smaboymd.R
 import com.example.smaboymd.custom.TitleBarView
 import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.fitsStatusBarView
 import com.gyf.immersionbar.ktx.immersionBar
 import com.gyf.immersionbar.ktx.statusBarHeight
 import kotlinx.android.synthetic.main.item_list_content.*
@@ -34,40 +35,22 @@ abstract class BaseActivity : FragmentActivity() {
            statusBarDarkFont(true)//状态栏深色字体
        }
         //设置布局
-        setContentView(R.layout.activity_base)
+        setContentView(getLayout())
 
         //initTitle
-        initToolbar()
+        initData()
 
     }
 
     /**
-     * 初始化标题栏
+     * 初始化页面数据
      */
-    private fun initToolbar(){
-        //将布局id放入内容布局
-        find<FrameLayout>(R.id.fl_content).apply {
-            addView(LayoutInflater.from(context).inflate(getLayout(),null,false))
-        }
-
-        //标题栏处理
-        find<TitleBarView>(R.id.view_title_bar).apply {
-            setVToolBarHeight(statusBarHeight)
-            getTitleView().text = getString(R.string.app_name)
-        }
-
-
-    }
-    /**
-     * 获取标题栏控件
-     */
-    fun getTitleBarView() = find<TitleBarView>(R.id.view_title_bar)
-
-
+    protected open fun initData(){}
 
     /**
      * 设置布局id
      */
     @LayoutRes abstract fun getLayout() : Int
+
 
 }

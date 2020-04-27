@@ -3,46 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="vertical">
 
+    <com.example.smaboymd.custom.TitleBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btn_01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn01"
-        tools:ignore="HardcodedText" />
-    <Button
-        android:id="@+id/btn_02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn01"
-        tools:ignore="HardcodedText" />
-    <Button
-        android:id="@+id/btn_03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn01"
-        tools:ignore="HardcodedText" />
-    <Button
-        android:id="@+id/btn_04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn01"
-        tools:ignore="HardcodedText" />
-    <Button
-        android:id="@+id/btn_05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn01"
-        tools:ignore="HardcodedText" />
-    <Button
-        android:id="@+id/btn_06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn01"
-        tools:ignore="HardcodedText" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="btn01"
+                android:layout_gravity="center"
+                tools:ignore="HardcodedText" />
+            <Button
+                android:id="@+id/btn_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="btn01"
+                tools:ignore="HardcodedText" />
+            <Button
+                android:id="@+id/btn_03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="btn01"
+                tools:ignore="HardcodedText" />
+            <Button
+                android:id="@+id/btn_04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="btn01"
+                tools:ignore="HardcodedText" />
+            <Button
+                android:id="@+id/btn_05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="btn01"
+                tools:ignore="HardcodedText" />
+            <Button
+                android:id="@+id/btn_06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="btn01"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 
 </LinearLayout>

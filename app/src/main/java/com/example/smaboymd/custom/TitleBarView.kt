@@ -44,6 +44,9 @@ class TitleBarView @JvmOverloads constructor(context: Context?, attrs: Attribute
 
         //设置监听
         setListener()
+
+        //适配状态栏，放置状态栏和标题栏重叠
+        ImmersionBar.setStatusBarView(context as Activity,find<View>(R.id.v_status_bar))
     }
 
     /**

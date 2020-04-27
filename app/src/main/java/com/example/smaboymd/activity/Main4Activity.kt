@@ -22,8 +22,6 @@ class Main4Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         super.onCreate(savedInstanceState)
-        getTitleBarView().hide()
-
         //获取状态栏的高度，设置标题栏的偏移量
         immersionBar().apply {
             //防止自己的标题栏和状态栏重叠导致，标题显示不清

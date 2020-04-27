@@ -26,20 +26,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun init() {
-        //初始化标题栏
-        getTitleBarView().apply {
-            getTitleView().text = String.format("%s"," 我是首页")
-        }.onClickTitleBarViewListener = object : TitleBarView.OnClickTitleBarViewListener{
-            override fun onLeftIconClick(view: View) {
-                finish()
-            }
 
-            override fun onCenterTextClick(view: View) {
-            }
-
-            override fun onRightIconClick(view: View) {
-            }
-        }
 
         find<Button>(R.id.btn_01).apply {
             text = strArray[0]
