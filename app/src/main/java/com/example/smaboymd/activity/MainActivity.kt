@@ -1,20 +1,18 @@
 package com.example.smaboymd.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import com.example.smaboymd.R
 import com.example.smaboymd.activity.base.BaseActivity
 import com.example.smaboymd.custom.TitleBarView
-import kotlinx.android.synthetic.main.activity_main.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity() {
 
-    val strArray = arrayOf("TextInputLayout","DrawerNavigation","Detail Flow","NestedScroll","btn_05","btn_06")
+    private val strArray = arrayOf("TextInputLayout","DrawerNavigation","Detail Flow","NestedScroll","btn_05","btn_06")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +24,22 @@ class MainActivity : BaseActivity() {
     }
 
     private fun init() {
+        find<TitleBarView>(R.id.tbv_title).apply {
+            getTitleView().text = String.format("%s","首页")
+            onClickTitleBarViewListener = object : TitleBarView.OnClickTitleBarViewListener{
+                override fun onLeftIconClick(view: View) {
+                    toast("left")
+                }
+
+                override fun onCenterTextClick(view: View) {
+                    toast("center")
+                }
+
+                override fun onRightIconClick(view: View) {
+                    toast("right")
+                }
+            }
+        }
 
 
         find<Button>(R.id.btn_01).apply {

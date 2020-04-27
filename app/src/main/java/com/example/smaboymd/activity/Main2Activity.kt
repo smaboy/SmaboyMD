@@ -3,14 +3,17 @@ package com.example.smaboymd.activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smaboymd.R
 import com.example.smaboymd.activity.base.BaseActivity
+import com.example.smaboymd.custom.TitleBarView
 import com.google.android.material.drawable.DrawableUtils
 import com.google.android.material.textfield.TextInputLayout
 import com.simple.spiderman.SpiderMan
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 import java.util.*
 
 
@@ -30,6 +33,22 @@ class Main2Activity : BaseActivity() {
     }
 
     private fun init() {
+        find<TitleBarView>(R.id.tbv_title).apply {
+            getTitleView().text = String.format("%s","Main2Activity")
+            onClickTitleBarViewListener = object : TitleBarView.OnClickTitleBarViewListener{
+                override fun onLeftIconClick(view: View) {
+                    toast("left")
+                }
+
+                override fun onCenterTextClick(view: View) {
+                    toast("center")
+                }
+
+                override fun onRightIconClick(view: View) {
+                    toast("right")
+                }
+            }
+        }
 
         val username = find<TextInputLayout>(R.id.til_username).apply {
             counterMaxLength = 10

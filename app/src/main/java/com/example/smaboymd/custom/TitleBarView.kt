@@ -62,7 +62,7 @@ class TitleBarView @JvmOverloads constructor(context: Context?, attrs: Attribute
             onClickTitleBarViewListener?.onCenterTextClick(it)
         }
         //右边图标点击事件
-        find<ImageView>(R.id.iv_left_icon).setOnClickListener {
+        find<ImageView>(R.id.iv_right_icon).setOnClickListener {
             onClickTitleBarViewListener?.onRightIconClick(it)
         }
     }
