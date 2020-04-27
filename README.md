@@ -19,3 +19,5 @@
 8. [Android CoordinatorLayout之自定义Behavior](https://www.jianshu.com/p/b987fad8fcb4)
 9. [Material Design系列（一）- CollapsingToolbarLayout 和AppBarLayout](https://www.jianshu.com/p/d83b5e870ac3)
 
+##### 部分页面展示
+<img src="app/src/main/res/drawable/g01.gif"/>
