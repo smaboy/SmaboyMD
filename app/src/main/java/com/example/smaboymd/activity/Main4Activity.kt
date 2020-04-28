@@ -1,20 +1,15 @@
 package com.example.smaboymd.activity
 
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.smaboymd.R
-import com.example.smaboymd.activity.base.BaseActivity
+import com.example.smaboymd.base.BaseActivity
 import com.gyf.immersionbar.ktx.fitsStatusBarView
 import com.gyf.immersionbar.ktx.immersionBar
-import com.gyf.immersionbar.ktx.statusBarHeight
 import org.jetbrains.anko.find
-import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.toast
 
 class Main4Activity : BaseActivity() {
