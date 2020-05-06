@@ -26,6 +26,9 @@ abstract class BaseActivity : FragmentActivity() {
         //设置布局
         setContentView(getLayout())
 
+        //初始化配置
+        init()
+
         //initTitle
         initData()
 
@@ -35,6 +38,11 @@ abstract class BaseActivity : FragmentActivity() {
      * 初始化页面数据
      */
     protected open fun initData(){}
+
+    /**
+     * 初始化设置
+     */
+    protected open fun init(){}
 
     /**
      * 设置布局id

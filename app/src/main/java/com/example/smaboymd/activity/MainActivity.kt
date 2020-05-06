@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main
     }
 
-    private fun init() {
+     override fun init() {
         initTitleBar(find(R.id.tbv_title),String.format("%s","首页"))
 
 
@@ -47,8 +47,8 @@ class MainActivity : BaseActivity() {
         find<Button>(R.id.btn_04).apply {
             text = strArray[3]
         }.setOnClickListener{
-//            startActivity<Main4Activity>()
-            toast(strArray[3])
+            startActivity<Main5Activity>()
+//            toast(strArray[3])
         }
         find<Button>(R.id.btn_05).apply {
             text = strArray[4]

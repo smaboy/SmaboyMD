@@ -29,10 +29,7 @@ class Main2Activity : BaseActivity() {
        return R.layout.activity_main2
     }
 
-    init {
-
-    }
-    private fun init() {
+     override fun init() {
 
         initTitleBar(find(R.id.tbv_title),String.format("%s","Main2Activity"))
 
