@@ -1,5 +1,6 @@
 package com.example.smaboymd.activity
 
+import android.view.KeyEvent
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
@@ -65,6 +66,12 @@ class Main5Activity : BaseActivity() {
 
             //打开js接口
             addJavascriptInterface(JsService,"android")
+
+            //可以后退
+            canGoBack()
+
+            //可以前进
+            canGoForward()
         }
 
         //按钮监听
@@ -95,5 +102,13 @@ class Main5Activity : BaseActivity() {
         }
 
 
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
+            mWebView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
