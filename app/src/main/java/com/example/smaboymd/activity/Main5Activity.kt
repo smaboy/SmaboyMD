@@ -90,8 +90,8 @@ class Main5Activity : BaseActivity() {
         if (url.isBlank()){
             find<TextView>(R.id.tv_web_view).text = "url不能为空哦"
         }else{
-            //初始化WebView
-            mWebView = WebView(applicationContext).apply {
+            //初始化WebView（这里的context，放置内存泄露推荐用applicationcontext，但会造成h5的alert弹窗无法弹出，使用本页面的context可以弹出）
+            mWebView = WebView(this).apply {
                 //设置布局属性
                 layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT)
 
