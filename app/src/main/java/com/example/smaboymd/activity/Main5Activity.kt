@@ -93,7 +93,7 @@ class Main5Activity : BaseActivity() {
             //初始化WebView
             mWebView = WebView(applicationContext).apply {
                 //设置布局属性
-                mWebView?.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT)
+                layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT)
 
                 //设置可调用js方法
                 settings.javaScriptEnabled = true
