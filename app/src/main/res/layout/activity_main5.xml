@@ -11,52 +11,89 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/wb_web_view"/>
+        app:layout_constraintBottom_toTopOf="@id/fl_web_view"/>
 
-    <WebView
-        android:id="@+id/wb_web_view"
+    <FrameLayout
+        android:id="@+id/fl_web_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintVertical_weight="1"
         app:layout_constraintTop_toBottomOf="@id/tbv_title"
-        app:layout_constraintBottom_toTopOf="@id/ll_button"
-        />
+        app:layout_constraintBottom_toTopOf="@id/ll_button">
+
+<!--        <WebView-->
+<!--            android:id="@+id/wb_web_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            />-->
+
+        <TextView
+            android:id="@+id/tv_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+
 
     <LinearLayout
         android:id="@+id/ll_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/wb_web_view"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/fl_web_view"
         app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:id="@+id/btn00"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="进入测试"
+            android:textSize="10sp"
+            android:lines="1"
+            android:autoSizeMinTextSize="6sp"
+            tools:ignore="HardcodedText,SmallSp,UnusedAttribute" />
         <Button
             android:id="@+id/btn01"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="有参有返回"
-            tools:ignore="HardcodedText" />
+            android:textSize="10sp"
+            android:lines="1"
+            android:autoSizeMinTextSize="6sp"
+            tools:ignore="HardcodedText,SmallSp,UnusedAttribute" />
         <Button
             android:id="@+id/btn02"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="有参无返回"
-            tools:ignore="HardcodedText" />
+            android:textSize="10sp"
+            android:lines="1"
+            android:autoSizeMinTextSize="6sp"
+            tools:ignore="HardcodedText,SmallSp,UnusedAttribute" />
         <Button
             android:id="@+id/btn03"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="无参无返回"
-            tools:ignore="HardcodedText" />
+            android:textSize="10sp"
+            android:lines="1"
+            android:autoSizeMinTextSize="6sp"
+            tools:ignore="HardcodedText,SmallSp,UnusedAttribute" />
         <Button
             android:id="@+id/btn04"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="无参有返回"
-            tools:ignore="HardcodedText" />
+            android:textSize="10sp"
+            android:lines="1"
+            android:autoSizeMinTextSize="6sp"
+            tools:ignore="HardcodedText,SmallSp,UnusedAttribute" />
 
     </LinearLayout>
 
