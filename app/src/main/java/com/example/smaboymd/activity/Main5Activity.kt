@@ -42,7 +42,7 @@ import java.lang.Exception
 class Main5Activity : BaseActivity() {
 
 
-    private var url : String = "https://www.baidu.com"
+    private var url : String = ""
     private var mWebView : WebView? = null
 
     private val mWebViewClient = object : WebViewClient() {
@@ -68,9 +68,16 @@ class Main5Activity : BaseActivity() {
                 false
             }
         }
+
+
     }
 
     private val mWebChromeClient = object : WebChromeClient() {
+
+        override fun onProgressChanged(view: WebView?, newProgress: Int) {
+
+            super.onProgressChanged(view, newProgress)
+        }
 
     }
 
@@ -79,7 +86,7 @@ class Main5Activity : BaseActivity() {
 
     override fun init() {
 //        url = "file:///android_asset/index.html"
-//        url = intent.getStringExtra("url") ?: ""
+        url = intent.getStringExtra("url") ?: ""
         if (url.isBlank()){
             find<TextView>(R.id.tv_web_view).text = "url不能为空哦"
         }else{
@@ -112,8 +119,6 @@ class Main5Activity : BaseActivity() {
                 //DOM Storage 重点是设置这个
                 settings.domStorageEnabled = true
 
-
-
                 //设置可弹出h5的弹窗
                 webChromeClient = mWebChromeClient
 
@@ -129,26 +134,26 @@ class Main5Activity : BaseActivity() {
                 //可以前进
                 canGoForward()
 
-                //设置载入url
-                loadUrl("https://www.baidu.com")
-//                loadUrl(url)
             }
 
+            //将WebView放入容器
             find<FrameLayout>(R.id.fl_web_view).addView(mWebView)
 
+            //设置载入url（该方法不能直接在WebView初始化时调用，不然使用url时，加载不出来）
+//            mWebView?.loadUrl("https://www.baidu.com")
+                mWebView?.loadUrl(url)
         }
-//        url = "file:///android_asset/index.html"
 
         //初始话标题
         initTitleBar(find(R.id.tbv_title),String.format("%s","Main5Activity"))
 
         //进入测试
         find<Button>(R.id.btn00).setOnClickListener{
-            mWebView?.loadUrl("file:///android_asset/index.html")
+            url = "file:///android_asset/index.html"
+            mWebView?.loadUrl(url)
         }
         //有参有返回
         find<Button>(R.id.btn01).setOnClickListener{
-//            mWebView.loadUrl("JavaScript:sum('1','2')")
             mWebView?.evaluateJavascript("sum(1,2)"
             ) {
                 toast(it)

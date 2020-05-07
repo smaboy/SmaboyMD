@@ -47,7 +47,7 @@ class MainActivity : BaseActivity() {
         find<Button>(R.id.btn_04).apply {
             text = strArray[3]
         }.setOnClickListener{
-            startActivity<Main5Activity>()
+            startActivity<Main5Activity>("url" to "https://www.baidu.com")
 //            toast(strArray[3])
         }
         find<Button>(R.id.btn_05).apply {
