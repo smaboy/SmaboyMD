@@ -1,12 +1,14 @@
 package com.example.smaboymd.activity
 
-import android.annotation.SuppressLint
-import android.webkit.ValueCallback
+import android.view.View
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Button
 import com.example.smaboymd.R
 import com.example.smaboymd.base.BaseActivity
+import com.example.smaboymd.service.JsService
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 
@@ -24,6 +26,24 @@ class Main5Activity : BaseActivity() {
 
     lateinit var mWebView : WebView
 
+    val mWebViewClient = object : WebViewClient() {
+
+        /**
+         * 打开网页时不调用系统浏览器， 而是在本WebView中显示；在网页上的所有加载都经过这个方法,这个函数我们可以做很多操作。
+         */
+        override fun shouldOverrideUrlLoading(
+            view: WebView?,
+            request: WebResourceRequest?
+        ): Boolean {
+            view?.loadUrl(request?.url.toString())
+            return true
+        }
+    }
+
+    val mWebChromeClient = object : WebChromeClient() {
+
+    }
+
 
     override fun getLayout() = R.layout.activity_main5
 
@@ -38,7 +58,13 @@ class Main5Activity : BaseActivity() {
             settings.javaScriptEnabled = true
 
             //设置可弹出h5的弹窗
-            webChromeClient = WebChromeClient()
+            webChromeClient = mWebChromeClient
+
+            //设置client(当h5跳转到h5还需要在，当前页面打开时，还需要设置客户端，重写载入方法 )
+            webViewClient = mWebViewClient
+
+            //打开js接口
+            addJavascriptInterface(JsService,"android")
         }
 
         //按钮监听
@@ -52,8 +78,8 @@ class Main5Activity : BaseActivity() {
         }
         find<Button>(R.id.btn02).setOnClickListener{
             val content = "hello world"
-            mWebView.loadUrl("JavaScript:alertMessage('hello word')")
-//            mWebView.loadUrl("JavaScript:alertMessage(\"$content\")")
+//            mWebView.loadUrl("JavaScript:alertMessage('hello word')")
+            mWebView.loadUrl("JavaScript:alertMessage(\"$content\")")
 
         }
         find<Button>(R.id.btn03).setOnClickListener{
