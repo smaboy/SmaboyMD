@@ -142,30 +142,6 @@ class Main5Activity : BaseActivity() {
         //初始话标题
         initTitleBar(find(R.id.tbv_title),String.format("%s","Main5Activity"))
 
-//        find<TextView>(R.id.tv_web_view).visibility = View.GONE
-
-        //初始化WebView的配置
-//        mWebView = find<WebView>(R.id.wb_web_view).apply {
-//            loadUrl("file:///android_asset/index.html")
-//            //设置可调用js方法
-//            settings.javaScriptEnabled = true
-//
-//            //设置可弹出h5的弹窗
-//            webChromeClient = mWebChromeClient
-//
-//            //设置client(当h5跳转到h5还需要在，当前页面打开时，还需要设置客户端，重写载入方法 )
-//            webViewClient = mWebViewClient
-//
-//            //打开js接口
-//            addJavascriptInterface(JsService,"android")
-//
-//            //可以后退
-//            canGoBack()
-//
-//            //可以前进
-//            canGoForward()
-//        }
-
         //进入测试
         find<Button>(R.id.btn00).setOnClickListener{
             mWebView?.loadUrl("file:///android_asset/index.html")
