@@ -2,6 +2,7 @@ package com.example.smaboymd.activity
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.example.smaboymd.R
 import com.example.smaboymd.base.BaseActivity
+import com.example.smaboymd.custom.LineProgressView
 import com.example.smaboymd.service.JsService
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
@@ -45,6 +47,7 @@ class Main5Activity : BaseActivity() {
     private var url : String = ""
     private var mWebView : WebView? = null
 
+
     private val mWebViewClient = object : WebViewClient() {
 
         /**
@@ -69,6 +72,13 @@ class Main5Activity : BaseActivity() {
             }
         }
 
+        override fun onPageFinished(view: WebView?, url: String?) {
+            //页面加载结束，关闭加载条
+//            find<LineProgressView>(R.id.lpv_progress).clear()
+
+            Log.e("tag","onPageFinished")
+        }
+
 
     }
 
@@ -76,10 +86,14 @@ class Main5Activity : BaseActivity() {
 
         override fun onProgressChanged(view: WebView?, newProgress: Int) {
 
-            super.onProgressChanged(view, newProgress)
+            //更新进度
+            find<LineProgressView>(R.id.lpv_progress).updateProgress(newProgress)
+            Log.e("tag",newProgress.toString())
         }
 
     }
+
+
 
 
     override fun getLayout() = R.layout.activity_main5
