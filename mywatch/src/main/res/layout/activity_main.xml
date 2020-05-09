@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#131313"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".MainActivity"
+    tools:deviceIds="wear">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <ScrollView
+            android:id="@+id/sv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/back_original_angle_5">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/back_white_angle_5"
+                    android:gravity="end|center_vertical"
+                    android:padding="5dp"
+                    android:text="东方航空"
+                    android:textColor="@color/white"
+                    android:textSize="7sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,SmallSp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="航班延误"
+                    android:textSize="8sp"
+                    android:textColor="@color/white"
+                    tools:ignore="HardcodedText,SmallSp"
+                    android:layout_margin="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="6sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="尊敬的LEE/SANGGIL旅客，由于流控影响，您原定09月03日的航班 MU2023 起飞时间已变更。"
+                    tools:ignore="HardcodedText,SmallSp" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toTopOf="@+id/sv_content"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.wear.widget.BoxInsetLayout>

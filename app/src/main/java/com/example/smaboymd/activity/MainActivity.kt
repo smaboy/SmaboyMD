@@ -12,7 +12,7 @@ import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity() {
 
-    private val strArray = arrayOf("TextInputLayout","DrawerNavigation","NestedScroll Flow","btn_04","btn_05","btn_06")
+    private val strArray = arrayOf("模块一","模块二","模块三","模块四","模块五","模块六")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
