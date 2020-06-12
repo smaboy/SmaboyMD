@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.KeyEvent
-import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
@@ -19,7 +18,6 @@ import com.example.smaboymd.custom.LineProgressView
 import com.example.smaboymd.service.JsService
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
-import java.lang.Exception
 
 /**
  * 和h5交互的操作类
@@ -44,8 +42,8 @@ import java.lang.Exception
 class Main5Activity : BaseActivity() {
 
 
-    private var url : String = ""
-    private var mWebView : WebView? = null
+    private var url: String = ""
+    private var mWebView: WebView? = null
 
 
     private val mWebViewClient = object : WebViewClient() {
@@ -59,15 +57,23 @@ class Main5Activity : BaseActivity() {
         ): Boolean {
             //ERR_UNKNOWN_URL_SCHEME处理
             val url = request?.url.toString()
+            val hitTestResult = view?.hitTestResult
             return try {
-                if (url.startsWith("http:")||url.startsWith("https:")){
+                if (url.startsWith("http:") || url.startsWith("https:")) {
                     view?.loadUrl(url)
-                }else{
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    true
+                } else {
+                    var intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                    if (packageManager.resolveActivity(intent, 0) == null) {  // 如果手机还没安装app，则跳转到应用市场
+                        intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + intent.getPackage())) // 注释2
+                    }
                     startActivity(intent)
+
+//                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+//                    startActivity(intent)
+                    true
                 }
-                true
-            }catch (e : Exception){
+            } catch (e: Exception) {
                 false
             }
         }
@@ -76,7 +82,7 @@ class Main5Activity : BaseActivity() {
             //页面加载结束，关闭加载条
 //            find<LineProgressView>(R.id.lpv_progress).clear()
 
-            Log.e("tag","onPageFinished")
+            Log.e("tag", "onPageFinished")
         }
 
 
@@ -88,12 +94,10 @@ class Main5Activity : BaseActivity() {
 
             //更新进度
             find<LineProgressView>(R.id.lpv_progress).updateProgress(newProgress)
-            Log.e("tag",newProgress.toString())
+            Log.e("tag", newProgress.toString())
         }
 
     }
-
-
 
 
     override fun getLayout() = R.layout.activity_main5
@@ -101,13 +105,16 @@ class Main5Activity : BaseActivity() {
     override fun init() {
 //        url = "file:///android_asset/index.html"
         url = intent.getStringExtra("url") ?: ""
-        if (url.isBlank()){
+        if (url.isBlank()) {
             find<TextView>(R.id.tv_web_view).text = "url不能为空哦"
-        }else{
+        } else {
             //初始化WebView（这里的context，放置内存泄露推荐用applicationcontext，但会造成h5的alert弹窗无法弹出，使用本页面的context可以弹出）
             mWebView = WebView(this).apply {
                 //设置布局属性
-                layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT)
+                layoutParams = FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT,
+                    FrameLayout.LayoutParams.MATCH_PARENT
+                )
 
                 //设置可调用js方法
                 settings.javaScriptEnabled = true
@@ -140,7 +147,12 @@ class Main5Activity : BaseActivity() {
                 webViewClient = mWebViewClient
 
                 //打开js接口
-                addJavascriptInterface(JsService,"android")
+                addJavascriptInterface(JsService, "android")
+
+                //android webview组件包含3个隐藏的系统接口：searchBoxJavaBridge_, accessibilityTraversal以及accessibility，恶意程序可以利用它们实现远程代码执行
+                removeJavascriptInterface("searchBoxJavaBridge_")
+                removeJavascriptInterface("accessibility")
+                removeJavascriptInterface("accessibilityTraversal")
 
                 //可以后退
                 canGoBack()
@@ -155,40 +167,42 @@ class Main5Activity : BaseActivity() {
 
             //设置载入url（该方法不能直接在WebView初始化时调用，不然使用url时，加载不出来）
 //            mWebView?.loadUrl("https://www.baidu.com")
-                mWebView?.loadUrl(url)
+            mWebView?.loadUrl(url)
         }
 
         //初始话标题
-        initTitleBar(find(R.id.tbv_title),String.format("%s","Main5Activity"))
+        initTitleBar(find(R.id.tbv_title), String.format("%s", "Main5Activity"))
 
         //进入测试
-        find<Button>(R.id.btn00).setOnClickListener{
+        find<Button>(R.id.btn00).setOnClickListener {
             url = "file:///android_asset/index.html"
             mWebView?.loadUrl(url)
         }
         //有参有返回
-        find<Button>(R.id.btn01).setOnClickListener{
-            mWebView?.evaluateJavascript("sum(1,2)"
+        find<Button>(R.id.btn01).setOnClickListener {
+            mWebView?.evaluateJavascript(
+                "sum(1,2)"
             ) {
                 toast(it)
             }
 
         }
         //有参无返回
-        find<Button>(R.id.btn02).setOnClickListener{
+        find<Button>(R.id.btn02).setOnClickListener {
             val content = "hello world"
 //            mWebView.loadUrl("JavaScript:alertMessage('hello word')")
             mWebView?.loadUrl("JavaScript:alertMessage(\"$content\")")
 
         }
         //无参无返回
-        find<Button>(R.id.btn03).setOnClickListener{
+        find<Button>(R.id.btn03).setOnClickListener {
             mWebView?.loadUrl("JavaScript:show()")
 
         }
         //无参有返回
-        find<Button>(R.id.btn04).setOnClickListener{
-            mWebView?.evaluateJavascript("getMsg()"
+        find<Button>(R.id.btn04).setOnClickListener {
+            mWebView?.evaluateJavascript(
+                "getMsg()"
             ) {
                 toast(it)
             }
