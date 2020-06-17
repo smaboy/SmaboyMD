@@ -1,5 +1,11 @@
 package com.example.smaboymd.activity
 
+import android.content.Intent
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
+import android.graphics.drawable.Icon
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -17,7 +23,47 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+
+        //动态加载shortcut
+        initShortCut()
     }
+
+    private fun initShortCut() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+            val shortcutManager = getSystemService(ShortcutManager::class.java)
+            val shortcut = ShortcutInfo.Builder(this, "id01")
+                .setShortLabel("我是短标题")
+                .setLongLabel("我是长标题我是长标题")
+                .setIcon(Icon.createWithResource(this@MainActivity, R.mipmap.ic_launcher_round))
+                .setIntent(Intent(this,Main2Activity::class.java).apply {
+                    action = Intent.ACTION_VIEW
+                })
+                .build()
+            val shortcut02 = ShortcutInfo.Builder(this, "id02")
+                .setShortLabel("我是短标题02")
+                .setLongLabel("我是长标题我是长标题02")
+                .setIcon(Icon.createWithResource(this@MainActivity, R.mipmap.ic_launcher_round))
+                .setIntent(Intent(this,Main3Activity::class.java).apply {
+                    action = Intent.ACTION_VIEW
+                })
+                .build()
+            val shortcut03 = ShortcutInfo.Builder(this, "id03")
+                .setShortLabel("我是短标题03")
+                .setLongLabel("我是长标题我是长标题03")
+                .setIcon(Icon.createWithResource(this@MainActivity, R.mipmap.ic_launcher_round))
+                .setIntent(Intent(this,Main4Activity::class.java).apply {
+                    action = Intent.ACTION_VIEW
+                })
+                .build()
+            shortcutManager?.dynamicShortcuts = mutableListOf(shortcut,shortcut02,shortcut03)
+        } else {
+            return
+        }
+
+    }
+
+
 
     override fun getLayout(): Int {
         return R.layout.activity_main

@@ -17,4 +17,11 @@
     <string name="title_item_detail">Item Detail</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="shortcutDisabledMessage">我是短链接关闭提示</string>
+    <string name="shortcutDisabledMessage02">我是短链接关闭提示</string>
+    <string name="shortcutLongLabel">我是长标题我是长标题</string>
+    <string name="shortcutLongLabel02">我是长标题我是长标题02</string>
+    <string name="shortcutShortLabel">我是短标题</string>
+    <string name="shortcutShortLabel02">我是短标题02</string>
 </resources>
