@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-<!--            &lt;!&ndash;添加shortcut&ndash;&gt;-->
+<!--            &lt;!&ndash;静态添加shortcut&ndash;&gt;-->
 <!--            <meta-data-->
 <!--                android:name="android.app.shortcuts"-->
 <!--                android:resource="@xml/shortcuts"/>-->
