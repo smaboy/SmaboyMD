@@ -54,6 +54,8 @@ class MainActivity : BaseActivity() {
                 .setIcon(Icon.createWithResource(this@MainActivity, R.mipmap.ic_launcher_round))
                 .setIntent(Intent(this,Main4Activity::class.java).apply {
                     action = Intent.ACTION_VIEW
+                    putExtra("isLogin",true)
+
                 })
                 .build()
             shortcutManager?.dynamicShortcuts = mutableListOf(shortcut,shortcut02,shortcut03)
@@ -87,7 +89,7 @@ class MainActivity : BaseActivity() {
         find<Button>(R.id.btn_03).apply {
             text = strArray[2]
         }.setOnClickListener{
-            startActivity<Main4Activity>()
+            startActivity<Main4Activity>("isLogin" to true)
 //            toast(strArray[2])
         }
         find<Button>(R.id.btn_04).apply {

@@ -13,7 +13,7 @@ class Main3Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initTitleBar(find(R.id.tbv_title),String.format("%s","Main2Activity"))
+        initTitleBar(find(R.id.tbv_title),String.format("%s","Main3Activity"))
     }
 
 }

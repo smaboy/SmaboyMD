@@ -1,5 +1,6 @@
 package com.example.smaboymd.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.ImageView
@@ -14,7 +15,19 @@ import org.jetbrains.anko.toast
 
 class Main4Activity : BaseActivity() {
 
+    var isLogin = false
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        //初始化拦截
+        isLogin = intent.getBooleanExtra("isLogin",false)
+
+        if (!isLogin){
+            //模拟没登录
+            finish()
+            startActivity(Intent(this,MainActivity::class.java))
+        }
+
+        //正常处理
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         super.onCreate(savedInstanceState)
         //获取状态栏的高度，设置标题栏的偏移量
@@ -32,6 +45,7 @@ class Main4Activity : BaseActivity() {
             circleCrop()
         }
         Glide.with(this).load(R.drawable.woman01).apply(option).into(find(R.id.iv_head))
+
 
 
 
