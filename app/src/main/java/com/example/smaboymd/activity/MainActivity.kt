@@ -1,5 +1,6 @@
 package com.example.smaboymd.activity
 
+import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
@@ -12,6 +13,7 @@ import android.widget.Button
 import com.example.smaboymd.R
 import com.example.smaboymd.base.BaseActivity
 import com.example.smaboymd.custom.TitleBarView
+import kotlinx.coroutines.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -62,7 +64,6 @@ class MainActivity : BaseActivity() {
         } else {
             return
         }
-
     }
 
 
@@ -78,7 +79,10 @@ class MainActivity : BaseActivity() {
         find<Button>(R.id.btn_01).apply {
             text = strArray[0]
         }.setOnClickListener{
-            startActivity<Main2Activity>()
+            val componentName = ComponentName("com.rytong.ceair","com.rytong.ceair.wxapi.WXEntryActivity")
+            val intent = Intent()
+            intent.component = componentName
+            startActivity(intent)
         }
         find<Button>(R.id.btn_02).apply {
             text = strArray[1]
@@ -102,6 +106,7 @@ class MainActivity : BaseActivity() {
             text = strArray[4]
         }.setOnClickListener{
             toast(strArray[4])
+            startActivity<MainFlutterActivity>()
         }
         find<Button>(R.id.btn_06).apply {
             text = strArray[5]
@@ -109,5 +114,20 @@ class MainActivity : BaseActivity() {
             toast(strArray[5])
         }
 
+         GlobalScope.launch {
+
+         }
+
+         GlobalScope.async {
+
+         }
+
+
+         runBlocking {  }
+
+
+
     }
+
+
 }

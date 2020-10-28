@@ -15,8 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="UnusedAttribute">
-
+        tools:ignore="UnusedAttribute"
+        tools:replace="android:name">
+        <activity android:name=".activity.MainFlutterActivity"/>
         <activity android:name=".activity.Main5Activity" />
         <activity android:name=".activity.Main4Activity" />
         <activity android:name=".activity.Main3Activity" />
@@ -28,10 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-<!--            &lt;!&ndash;静态添加shortcut&ndash;&gt;-->
-<!--            <meta-data-->
-<!--                android:name="android.app.shortcuts"-->
-<!--                android:resource="@xml/shortcuts"/>-->
+            <!-- &lt;!&ndash;静态添加shortcut&ndash;&gt; -->
+            <!-- <meta-data -->
+            <!-- android:name="android.app.shortcuts" -->
+            <!-- android:resource="@xml/shortcuts"/> -->
 
         </activity> <!-- 全面屏适配 -->
         <meta-data

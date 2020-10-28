@@ -2,3 +2,9 @@ rootProject.name='SmaboyMD'
 include ':app'
 include ':mywatch'
 include ':libqr'
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        'flutter_module_test/.android/include_flutter.groovy'
+))
+
+include ':flutter_module_test'

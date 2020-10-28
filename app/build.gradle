@@ -72,4 +72,6 @@ dependencies {
 
     //zxing包
     implementation "com.google.zxing:core:3.4.0"
+
+    implementation project(':flutter')
 }
