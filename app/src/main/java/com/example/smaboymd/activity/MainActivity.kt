@@ -79,10 +79,7 @@ class MainActivity : BaseActivity() {
         find<Button>(R.id.btn_01).apply {
             text = strArray[0]
         }.setOnClickListener{
-            val componentName = ComponentName("com.rytong.ceair","com.rytong.ceair.wxapi.WXEntryActivity")
-            val intent = Intent()
-            intent.component = componentName
-            startActivity(intent)
+            startActivity<Main2Activity>()
         }
         find<Button>(R.id.btn_02).apply {
             text = strArray[1]
